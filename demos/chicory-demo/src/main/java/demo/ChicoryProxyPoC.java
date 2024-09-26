@@ -38,10 +38,31 @@ public class ChicoryProxyPoC {
         int countVowels(String input);
     }
 
+
+
+
+
+
+
+
     public static void main(String[] args) {
         HelloWorld hw = Chicory.proxy(HelloWorld.class);
-        System.out.println(hw.countVowels("AAAx"));
+        System.out.println(hw.countVowels("BUBU"));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public final class Chicory {
 

@@ -1,9 +1,9 @@
 package main
 
 import (
-        "strconv"
+	"strconv"
 
-        "github.com/extism/go-pdk"
+	"github.com/extism/go-pdk"
 )
 
 // build via
@@ -11,35 +11,33 @@ import (
 
 //export count_vowels
 func count_vowels() int32 {
-        input := pdk.Input()
 
-        count := 0
-        for _, a := range input {
-                switch a {
-                case 'A', 'I', 'E', 'O', 'U', 'a', 'e', 'i', 'o', 'u':
-                        count++
-                default:
-                }
-        }
+	// read input as []byte slice
+	input := pdk.Input()
 
-        // test some extra pdk functionality
-        if pdk.GetVar("a") == nil {
-                pdk.SetVar("a", []byte("this is var a"))
-        }
-        varA := pdk.GetVar("a")
-        thing, ok := pdk.GetConfig("thing")
+	count := 0
+	for _, a := range input {
+		switch a {
+		case 'A', 'I', 'E', 'O', 'U', 'a', 'e', 'i', 'o', 'u':
+			count++
+		default:
+		}
+	}
 
-        if !ok {
-                thing = "<unset by host>"
-        }
+	// test some extra pdk functionality
+	message, ok := pdk.GetConfig("message")
 
-        output := `{"count": ` + strconv.Itoa(count) + `, "config": "` + thing + `", "a": "` + string(varA) + `"}`
-        mem := pdk.AllocateString(output)
+	if !ok {
+		message = "<unset by host>"
+	}
 
-        // zero-copy output to host
-        pdk.OutputMemory(mem)
+	output := `{"count": ` + strconv.Itoa(count) + `, "message": "` + message + `"}`
+	mem := pdk.AllocateString(output)
 
-        return 0
+	// zero-copy output to host
+	pdk.OutputMemory(mem)
+
+	return 0
 }
 
 func main() {}

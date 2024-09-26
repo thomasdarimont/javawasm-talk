@@ -12,7 +12,7 @@
     ;; start implementation
     ;; call console.log("Hello, World!") $count times
     (loop
-      i32.const 13
+      i32.const 13 ;; "Hello, World!".length() == 13
       i32.const 0
       call $log
       local.get $count

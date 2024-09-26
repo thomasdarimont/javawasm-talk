@@ -25,8 +25,9 @@ public class ChicoryHostFunctionDemo {
             return null;
         }, "console", "log", List.of(ValueType.I32, ValueType.I32), List.of());
 
-        var instance = Module.builder(Path.of("demos/chicory-demo/wasm/log/logger.wasm")).build()
+        var instance = Module.builder(Path.of("demos/chicory-demo/wasm/log/logger.wasm"))
                 .withHostImports(new HostImports(new HostFunction[]{func})) // expose func to WASM runtime
+                .build()
                 .instantiate();
 
         var logIt = instance.export("logIt");

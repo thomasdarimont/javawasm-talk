@@ -8,14 +8,16 @@ import org.extism.sdk.wasm.PathWasmSource;
 public class ExtismRustSum {
 
     public static void main(String[] args) throws Exception {
-        var json = new ObjectMapper();
+        var objectMapper = new ObjectMapper();
+
         var source = new PathWasmSource("code", "demos/extism-demo/wasm/add/rust/add.wasm", null);
 
         try (var plugin = new Plugin(new Manifest(source), true, null)) {
 
-            String input = json.writeValueAsString(new Input(3, 5));
-            String output = plugin.call("sum", input);
-            Output result = json.readValue(output, Output.class);
+            Input input = new Input(3, 5);
+            String inputString = objectMapper.writeValueAsString(input);
+            String outputString = plugin.call("sum", inputString);
+            Output result = objectMapper.readValue(outputString, Output.class);
 
             System.out.println(result.value());
         }

@@ -12,7 +12,12 @@ public class ExtismGoVowels {
 
         try (var plugin = new Plugin(new Manifest(source), true, null)) {
             // counts number of vowels in the given input
-            var output = plugin.call("count_vowels", "Hello World");
+            plugin.updateConfig("""
+                    {
+                        "message": "Hello World!"
+                    }
+                    """);
+            String output = plugin.call("count_vowels", "AAAA");
             System.out.println(output);
         }
     }

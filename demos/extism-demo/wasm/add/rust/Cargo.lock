@@ -101,9 +101,9 @@ dependencies = [
 
 [[package]]
 name = "extism-pdk"
-version = "1.2.0"
+version = "1.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c26a361aeddab8ebbb6157eeed9a8341358d6843c5f5a53677466caf5f0b5eaf"
+checksum = "0334e38735348bd085e518bfc284395fcb5c198ba65ce36f9712bd25ff9e7be0"
 dependencies = [
  "anyhow",
  "base64",
@@ -116,9 +116,9 @@ dependencies = [
 
 [[package]]
 name = "extism-pdk-derive"
-version = "1.2.0"
+version = "1.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3a024b0f20295098d1d19ad443fad077c1d8c1d81d09a2c20f0618ebd201517e"
+checksum = "cc4b8ea80a1b89cf8b053bdc5df2385125bcb9110d19be289c2030c61c7c6ad9"
 dependencies = [
  "proc-macro2",
  "quote",
